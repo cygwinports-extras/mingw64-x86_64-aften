@@ -1,0 +1,20 @@
+CROSS_HOST="x86_64-w64-mingw32"
+inherit cross cmake
+
+NAME="mingw64-x86_64-aften"
+VERSION=0.0.8
+RELEASE=1
+CATEGORY="Devel"
+SUMMARY="A/52 (AC-3) audio encoder for Win64 toolchain"
+DESCRIPTION="Aften is an audio encoder which generates compressed audio streams
+based on ATSC A/52 specification. This type of audio is also known as AC-3 or
+Dolby(R) Digital and is one of the audio codecs used in DVD-Video content."
+HOMEPAGE="http://aften.sourceforge.net/"
+SRC_URI="mirror://sourceforge/aften/aften-${VERSION}.tar.bz2"
+SRC_DIR="aften-${VERSION}"
+PATCH_URI="
+	0.0.8-cmake-install.patch
+	0.0.8-mingw64.patch
+"
+
+CYGCMAKE_ARGS="-DSHARED=ON -DBINDINGS_CXX=ON -DUTILS=OFF"

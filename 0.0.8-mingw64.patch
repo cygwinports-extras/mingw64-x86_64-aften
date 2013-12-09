@@ -1,0 +1,20 @@
+--- origsrc/aften-0.0.8/libaften/a52enc.c	2007-09-07 20:45:52.000000000 -0500
++++ src/aften-0.0.8/libaften/a52enc.c	2013-12-09 17:16:32.427132200 -0600
+@@ -1424,7 +1424,7 @@ threaded_encode(void* vtctx)
+ {
+     A52ThreadContext *tctx;
+ 
+-#ifdef MINGW_ALIGN_STACK_HACK
++#if defined(MINGW_ALIGN_STACK_HACK) && !defined(_WIN64)
+     asm volatile (
+         "movl %%esp, %%ecx\n"
+         "andl $15, %%ecx\n"
+@@ -1464,7 +1464,7 @@ threaded_encode(void* vtctx)
+ 
+     windows_event_set(&tctx->ts.ready_event);
+ 
+-#ifdef MINGW_ALIGN_STACK_HACK
++#if defined(MINGW_ALIGN_STACK_HACK) && !defined(_WIN64)
+     asm volatile (
+         "popl %%ecx\n"
+         "popl %%ecx\n"
