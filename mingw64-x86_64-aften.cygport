@@ -3,7 +3,7 @@ inherit cross cmake
 
 NAME="mingw64-x86_64-aften"
 VERSION=0.0.8
-RELEASE=1
+RELEASE=2
 CATEGORY="Devel"
 SUMMARY="A/52 (AC-3) audio encoder for Win64 toolchain"
 DESCRIPTION="Aften is an audio encoder which generates compressed audio streams
